@@ -140,7 +140,6 @@ const Resume = () => {
         'Led migration of 11,000 properties with 45% reduction in manual effort',
         'Implemented workflow automation for streamlined processes',
         'Optimized GraphQL APIs, cutting payload processing by 35%',
-        'Delivered 20% cost savings in data operations'
       ],
       icon: Database,
       color: 'bg-purple-500'

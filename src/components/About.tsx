@@ -20,7 +20,7 @@ const About = () => {
   ];
 
   const personalInfoRight = [
-    { label: 'Age', value: '29', icon: '👤' },
+    { label: 'Age', value: '30', icon: '👤' },
     { label: 'Degree', value: 'Bachelor Of Engineering', icon: '🎓' },
     { label: 'Email', value: 'Deepanrey@gmail.com', icon: '📧' },
     { label: 'LinkedIn', value: 'Deepanraj95', icon: '💼' },
@@ -61,7 +61,7 @@ const About = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed max-w-6xl mx-auto">
-            Jovial Internet freak who is in love with <span className="text-cyan-600 font-semibold">0 and 1</span> and by profession cloud engineer also part of <span className="text-purple-600 font-semibold">Microsoft Security Researcher</span> with 7++ years of experience and do own <span className="text-pink-600 font-semibold">CVE-2021-24113</span>, certified in Azure AZ-305 and AWS Solutions Architect.
+            Jovial Internet freak who is in love with <span className="text-cyan-600 font-semibold">0 and 1</span> and by profession Azure/AWS cloud Architect also part of <span className="text-purple-600 font-semibold">Microsoft Security Researcher</span> with 7++ years of experience and do own <span className="text-pink-600 font-semibold">CVE-2021-24113</span>, certified in Azure AZ-305 and AWS Solutions Architect.
           </p>
         </div>
 
