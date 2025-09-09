@@ -186,7 +186,7 @@ const Resume = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -204,19 +204,13 @@ const Resume = () => {
     );
   };
 
-  const TimelineItem = ({ item, index, isLeft = true, isMobile = false }: { item: any, index: number, isLeft?: boolean, isMobile?: boolean }) => {
+  const TimelineItem = ({ item, index, isLeft = true }: { item: any, index: number, isLeft?: boolean }) => {
     const Icon = item.icon;
     const isExpanded = expandedItems.includes(item.id);
     
     return (
       <div 
-        className={`relative mb-6 md:mb-8 lg:mb-10 ${
-          isMobile 
-            ? 'pl-12 md:pl-16' 
-            : isLeft 
-              ? 'md:pr-4 lg:pr-8' 
-              : 'md:pl-4 lg:pl-8'
-        }`}
+        className={`relative mb-8 lg:mb-10 ${isLeft ? 'lg:pr-8' : 'lg:pl-8'} pl-12 lg:pl-0`}
         style={{ 
           animationDelay: `${index * 200}ms`,
           transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -224,71 +218,63 @@ const Resume = () => {
           transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 200}ms`
         }}
       >
-        {/* Timeline connector */}
-        <div className={`absolute top-6 h-0.5 bg-gray-300 ${
-          isMobile 
-            ? 'hidden' 
-            : `hidden md:block ${isLeft ? 'right-0' : 'left-0'} w-4 lg:w-8`
+        {/* Timeline connector - Desktop only */}
+        <div className={`absolute top-6 h-0.5 bg-gray-300 hidden lg:block ${
+          isLeft ? 'right-0 w-8' : 'left-0 w-8'
         }`}></div>
         
         {/* Timeline marker */}
         <div className={`absolute top-5 w-6 h-6 ${item.color} rounded-full flex items-center justify-center shadow-lg z-10 ${
-          isMobile 
-            ? '-left-9 md:-left-11' 
-            : isLeft 
-              ? '-left-3 md:-right-3' 
-              : '-left-3 md:-left-3'
+          isLeft ? '-left-9 lg:-right-3' : '-left-9 lg:-left-3'
         }`}>
           <Icon className="h-3 w-3 text-white" />
         </div>
 
         {/* Content card */}
         <div 
-          className={`group bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-lg md:hover:shadow-xl transition-all duration-300 border-2 border-transparent overflow-hidden relative cursor-pointer ${
-            isMobile ? '' : 'ml-6 md:ml-0'
-          }`}
+          className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent overflow-hidden relative cursor-pointer ml-6 lg:ml-0"
           onClick={() => toggleExpanded(item.id)}
         >
           {/* Multi-color animated border */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-xl md:rounded-2xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-xl md:rounded-2xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 p-0.5">
-            <div className="w-full h-full bg-white rounded-xl md:rounded-2xl"></div>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-2xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-2xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 p-0.5">
+            <div className="w-full h-full bg-white rounded-2xl"></div>
           </div>
           
-          <div className="p-4 md:p-6 lg:p-8">
+          <div className="p-6 lg:p-8">
             <div className="relative z-10">
-              {/* Header - Responsive layout */}
-              <div className="flex flex-col gap-2 md:gap-3 mb-3 md:mb-4">
+              {/* Header */}
+              <div className="flex flex-col gap-3 mb-4">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-1 md:mb-2 leading-tight break-words">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 leading-tight break-words">
                       {item.title || item.role}
                     </h3>
                   </div>
-                  <div className="flex-shrink-0 p-1.5 md:p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">
-                    {isExpanded ? <ChevronUp className="h-4 w-4 md:h-5 md:w-5" /> : <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />}
+                  <div className="flex-shrink-0 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                    {isExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                   </div>
                 </div>
                 
-                <div className="space-y-1 md:space-y-2">
-                  <div className="flex items-center gap-2 text-sm md:text-base text-gray-600">
-                    <Calendar className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600">
+                    <Calendar className="h-4 w-4 flex-shrink-0" />
                     <span className="font-medium break-words">{item.period}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm md:text-base text-gray-600">
-                    <MapPin className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                  <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600">
+                    <MapPin className="h-4 w-4 flex-shrink-0" />
                     <span className="break-words">{item.institution || item.company}</span>
                   </div>
                   {item.client && (
-                    <div className="flex items-center gap-2 text-sm md:text-base text-gray-600">
-                      <Building className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                    <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600">
+                      <Building className="h-4 w-4 flex-shrink-0" />
                       <span className="break-words">Client: {item.client}</span>
                     </div>
                   )}
                 </div>
                 
                 {item.type && (
-                  <span className={`inline-block px-2 md:px-3 py-1 text-xs md:text-sm font-medium rounded-full self-start ${
+                  <span className={`inline-block px-3 py-1 text-sm font-medium rounded-full self-start ${
                     item.type === 'Certification' ? 'bg-yellow-100 text-yellow-800' :
                     item.type === 'Internship' ? 'bg-blue-100 text-blue-800' :
                     'bg-green-100 text-green-800'
@@ -298,8 +284,8 @@ const Resume = () => {
                 )}
               </div>
 
-              {/* Description - Responsive text */}
-              <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-3 md:mb-4">
+              {/* Description */}
+              <p className="text-gray-700 text-sm lg:text-base leading-relaxed mb-4">
                 {item.description}
               </p>
 
@@ -307,23 +293,23 @@ const Resume = () => {
               <div className={`transition-all duration-300 overflow-hidden ${
                 isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
               }`}>
-                <div className="border-t border-gray-100 pt-3 md:pt-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 md:mb-3 text-sm md:text-base">
+                <div className="border-t border-gray-100 pt-4">
+                  <h4 className="font-semibold text-gray-900 mb-3 text-sm lg:text-base">
                     {item.achievements ? 'Key Achievements:' : 'Key Responsibilities & Impact:'}
                   </h4>
-                  <ul className="space-y-1.5 md:space-y-2">
+                  <ul className="space-y-2">
                     {(item.achievements || item.responsibilities)?.map((point: string, idx: number) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                      <li key={idx} className="flex items-start gap-2 text-sm lg:text-base text-gray-700">
                         <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
                         <span className="leading-relaxed break-words">{point}</span>
                       </li>
                     ))}
                   </ul>
 
-                  {/* Credentials - Fully responsive buttons */}
+                  {/* Credentials */}
                   {item.credentials && (
-                    <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-gray-100">
-                      <h4 className="font-semibold text-gray-900 mb-2 md:mb-3 text-sm md:text-base">
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <h4 className="font-semibold text-gray-900 mb-3 text-sm lg:text-base">
                         Credentials:
                       </h4>
                       <div className="flex flex-col sm:flex-row flex-wrap gap-2">
@@ -333,7 +319,7 @@ const Resume = () => {
                             href={cred.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-1 px-3 md:px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full text-xs md:text-sm font-medium transition-colors duration-200 w-full sm:w-auto min-w-0"
+                            className="inline-flex items-center justify-center gap-1 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto min-w-0"
                             onClick={(e) => e.stopPropagation()}
                           >
                             <ExternalLink className="h-3 w-3 flex-shrink-0" />
@@ -353,89 +339,89 @@ const Resume = () => {
   };
 
   return (
-    <section id="resume" ref={sectionRef} className="py-12 md:py-16 lg:py-20 bg-gray-50 lg:ml-56 xl:ml-64">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        {/* Section Title - Fully responsive typography */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 px-2">
+    <section id="resume" ref={sectionRef} className="py-20 bg-gray-50 lg:ml-56 xl:ml-64">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        {/* Section Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-purple-600">Resume</span>
           </h2>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 md:px-2">
+          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             My journey began in 2011 as an ambitious adult, and it continues today with a focus on 
             <span className="text-cyan-600 font-semibold"> research and development</span>, driven by clear goals and aspirations.
           </p>
         </div>
 
-        {/* Fully Responsive Layout */}
+        {/* Timeline Layout */}
         <div className="relative">
-          {/* Central Timeline Line - Hidden on mobile, visible on lg+ */}
+          {/* Central Timeline Line - Desktop only */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform -translate-x-1/2"></div>
 
-          {/* Mobile Timeline Line - Visible only on mobile */}
+          {/* Mobile Timeline Line */}
           <div className="block lg:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
           {/* Mobile Layout - Single Column */}
-          <div className="block lg:hidden space-y-6 md:space-y-8">
+          <div className="block lg:hidden space-y-8">
             {/* Education Section */}
-            <div className="mb-8">
-              <div className="text-center mb-6">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   Education & Certifications
                 </h3>
-                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto"></div>
               </div>
               
               <div className="space-y-6">
                 {educationData.map((item, index) => (
-                  <TimelineItem key={item.id} item={item} index={index} isLeft={true} isMobile={true} />
+                  <TimelineItem key={item.id} item={item} index={index} isLeft={true} />
                 ))}
               </div>
             </div>
 
             {/* Experience Section */}
-            <div className="mb-8">
-              <div className="text-center mb-6">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   Professional Experience
                 </h3>
-                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600 mx-auto"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600 mx-auto"></div>
               </div>
               
               <div className="space-y-6">
                 {experienceData.map((item, index) => (
-                  <TimelineItem key={item.id} item={item} index={index + educationData.length} isLeft={false} isMobile={true} />
+                  <TimelineItem key={item.id} item={item} index={index + educationData.length} isLeft={false} />
                 ))}
               </div>
             </div>
           </div>
 
           {/* Desktop Layout - Two Columns */}
-          <div className="hidden lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left Column - Education, Certifications, Internships */}
-            <div className="space-y-6 md:space-y-8">
-              <div className="text-right mb-6 md:mb-8">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+          <div className="hidden lg:grid lg:grid-cols-2 gap-12">
+            {/* Left Column - Education */}
+            <div className="space-y-8">
+              <div className="text-right mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   Education & Certifications
                 </h3>
-                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 ml-auto"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 ml-auto"></div>
               </div>
               
               {educationData.map((item, index) => (
-                <TimelineItem key={item.id} item={item} index={index} isLeft={true} isMobile={false} />
+                <TimelineItem key={item.id} item={item} index={index} isLeft={true} />
               ))}
             </div>
 
-            {/* Right Column - Professional Experience */}
-            <div className="space-y-6 md:space-y-8">
-              <div className="text-left mb-6 md:mb-8">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+            {/* Right Column - Experience */}
+            <div className="space-y-8">
+              <div className="text-left mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   Professional Experience
                 </h3>
-                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600"></div>
               </div>
               
               {experienceData.map((item, index) => (
-                <TimelineItem key={item.id} item={item} index={index} isLeft={false} isMobile={false} />
+                <TimelineItem key={item.id} item={item} index={index} isLeft={false} />
               ))}
             </div>
           </div>
