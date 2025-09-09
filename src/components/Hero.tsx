@@ -135,14 +135,20 @@ const Hero = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-400 via-pink-400 via-blue-400 via-green-400 via-yellow-400 to-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm animate-spin" style={{ animationDuration: '3s' }}></div>
             
             {/* Main YouTube button */}
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300 border-4 border-white/20 group-hover:border-white/40">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300 border-4 border-white/20 group-hover:border-white/40 focus:outline-none focus:ring-0 focus:border-white/60" tabIndex="0">
+              {/* Circular glow effect that adapts to theme */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-400/50 via-red-500/60 to-red-600/50 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-md animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full bg-red-500/30 opacity-0 group-hover:opacity-100 transition-all duration-700 blur-lg animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 via-purple-400/20 via-pink-400/20 via-blue-400/20 via-green-400/20 via-yellow-400/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-all duration-1000 blur-xl animate-pulse" style={{ animationDelay: '0.6s' }}></div>
               <Youtube className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-white" />
             </div>
             
             {/* Tooltip */}
             <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-              <div className="bg-black/80 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap border border-white/20">
-                Watch My Videos
+              <div className="bg-black/80 backdrop-blur-sm px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap border border-white/20">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 via-pink-400 via-blue-400 via-green-400 via-yellow-400 to-cyan-400 animate-pulse">
+                  Know Me More
+                </span>
                 <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black/80 rotate-45 border-l border-t border-white/20"></div>
               </div>
             </div>
