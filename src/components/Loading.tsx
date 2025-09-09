@@ -6,21 +6,13 @@ interface LoadingProps {
 
 const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [currentSection, setCurrentSection] = useState('');
   const [isComplete, setIsComplete] = useState(false);
   const [colorIndex, setColorIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
-  const loadingSections = [
-    { name: 'Initializing Portfolio', duration: 200 },
-    { name: 'Loading Components', duration: 150 },
-    { name: 'Loading Assets', duration: 150 },
-    { name: 'Finalizing', duration: 100 },
-  ];
-
-  // Images to cycle through
-  const images = [
+  // Images to cycle through during loading
+  const displayImages = [
     '/assets/images/Deepansnap.png',
     '/assets/images/deepanlogo.png'
   ];
@@ -40,59 +32,34 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
   // Show loading screen immediately
   useEffect(() => {
     setIsVisible(true);
-    setCurrentSection('Starting...');
   }, []);
 
+  // Simple progress loading
   useEffect(() => {
-    let currentProgress = 0;
-    let sectionIndex = 0;
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          setTimeout(() => {
+            setIsComplete(true);
+            setTimeout(() => {
+              onLoadingComplete();
+            }, 500);
+          }, 800);
+          return 100;
+        }
+        return prev + 1;
+      });
+    }, 30); // Complete in about 3 seconds
 
-    const loadNextSection = () => {
-      if (sectionIndex < loadingSections.length) {
-        const section = loadingSections[sectionIndex];
-        setCurrentSection(section.name);
-
-        const sectionProgress = 100 / loadingSections.length;
-        const targetProgress = Math.min(100, currentProgress + sectionProgress);
-
-        // Faster progress animation
-        const progressInterval = setInterval(() => {
-          currentProgress += 5; // Faster increment
-          setProgress(Math.min(targetProgress, currentProgress));
-
-          if (currentProgress >= targetProgress) {
-            clearInterval(progressInterval);
-            sectionIndex++;
-
-            if (sectionIndex < loadingSections.length) {
-              setTimeout(loadNextSection, 50); // Faster transitions
-            } else {
-              // All sections loaded
-              setProgress(100);
-              setCurrentSection('Ready!');
-              setTimeout(() => {
-                setIsComplete(true);
-                setTimeout(() => {
-                  onLoadingComplete();
-                }, 200);
-              }, 300);
-            }
-          }
-        }, section.duration / (sectionProgress / 5)); // Adjusted for faster increment
-      }
-    };
-
-    // Start loading process with minimal delay
-    const startTimer = setTimeout(loadNextSection, 50); // Start faster
-    
-    return () => clearTimeout(startTimer);
+    return () => clearInterval(progressInterval);
   }, [onLoadingComplete]);
 
   // Color transition effect
   useEffect(() => {
     const colorInterval = setInterval(() => {
       setColorIndex((prevIndex) => (prevIndex + 1) % colorThemes.length);
-    }, 800); // Change color every 800ms for smooth transition
+    }, 1000);
 
     return () => clearInterval(colorInterval);
   }, []);
@@ -100,16 +67,16 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
   // Image transition effect
   useEffect(() => {
     const imageInterval = setInterval(() => {
-      setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 1200); // Change image every 1.2 seconds
+      setImageIndex((prevIndex) => (prevIndex + 1) % displayImages.length);
+    }, 1500);
 
     return () => clearInterval(imageInterval);
   }, []);
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-500 ${
-        isComplete ? 'opacity-0 pointer-events-none' : isVisible ? 'opacity-100' : 'opacity-0'
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-700 ${
+        isComplete ? 'opacity-0 pointer-events-none transform scale-105' : isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{ 
         backgroundColor: '#0f172a',
@@ -118,8 +85,8 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
     >
       {/* Professional Background */}
       <div className="absolute inset-0">
-        {/* Subtle floating particles - fewer for performance */}
-        {[...Array(15)].map((_, i) => (
+        {/* Subtle floating particles */}
+        {[...Array(20)].map((_, i) => (
           <div
             key={i}
             className="absolute w-0.5 h-0.5 xs:w-1 xs:h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-float opacity-40"
@@ -143,19 +110,18 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
       {/* Loading Content - Fully Responsive */}
       <div className="relative z-10 text-center max-w-xs xs:max-w-sm sm:max-w-md lg:max-w-lg mx-auto px-4 xs:px-6">
         {/* Professional Logo/Image */}
-        <div className="group w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mx-auto mb-4 xs:mb-6 sm:mb-8 rounded-full overflow-hidden relative shadow-2xl">
-          {/* Multi-color animated border with lighter colors */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-full opacity-100 transition-opacity duration-500 blur-sm animate-pulse"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-full opacity-100 transition-opacity duration-500 p-0.5">
-            <div className="w-full h-full bg-white rounded-full"></div>
+        <div className="group w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto mb-4 xs:mb-6 sm:mb-8 rounded-full overflow-hidden relative shadow-2xl">
+          {/* Multi-color animated border */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-full opacity-60 group-hover:opacity-90 transition-all duration-700 blur-xl animate-pulse"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-full opacity-80 group-hover:opacity-100 transition-all duration-500 p-0.5 animate-spin" style={{ animationDuration: '8s' }}>
+            <div className="w-full h-full bg-gray-900 rounded-full"></div>
           </div>
-          <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
+          <div className="relative w-full h-full rounded-full overflow-hidden bg-white/95 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-2xl border-2 border-white/20">
             <img
-              src={images[imageIndex]}
+              src={displayImages[imageIndex]}
               alt="Deepan Logo"
-              className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+              className="w-full h-full object-cover transition-all duration-700 ease-in-out p-1"
               onError={(e) => {
-                // Fallback if image doesn't load
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
                 const parent = target.parentElement;
@@ -168,11 +134,6 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
                 }
               }}
             />
-            
-            {/* Progress indicator overlay */}
-            <div className="absolute bottom-0 right-0 w-3 h-3 xs:w-4 xs:h-4 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
-              <div className="w-1.5 h-1.5 xs:w-2 xs:h-2 bg-white rounded-full animate-pulse"></div>
-            </div>
           </div>
         </div>
 
@@ -185,38 +146,53 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
             Cloud Architect & Security Researcher
           </p>
           <p className="text-gray-300 text-xs xs:text-sm sm:text-base">
-            Welcome to my professional portfolio
+            Loading professional portfolio...
           </p>
         </div>
 
         {/* Progress Section - Responsive */}
         <div className="space-y-3 xs:space-y-4 sm:space-y-6">
-          {/* Current Section */}
-          <div className="text-center">
-            <p className="text-white text-sm xs:text-base sm:text-lg font-semibold mb-1 xs:mb-2">
-              {currentSection}
-            </p>
-          </div>
-
           {/* Progress Bar - Responsive */}
           <div className="relative">
-            <div className="w-full bg-gray-800/50 rounded-full h-2 xs:h-2.5 sm:h-3 overflow-hidden backdrop-blur-sm border border-gray-700/50">
+            <div className="w-full bg-gray-800/50 rounded-full h-3 xs:h-3.5 sm:h-4 overflow-hidden backdrop-blur-sm border border-gray-700/50">
               <div
-                className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full transition-all duration-200 ease-out relative overflow-hidden"
+                className={`h-full bg-gradient-to-r ${colorThemes[colorIndex]} rounded-full transition-all duration-300 ease-out relative overflow-hidden`}
                 style={{ width: `${progress}%` }}
               >
                 {/* Animated shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-shimmer"></div>
+                
+                {/* Pulsing effect when near completion */}
+                {progress > 90 && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                )}
               </div>
             </div>
 
             {/* Progress Percentage - Responsive */}
-            <div className="flex justify-between items-center mt-2 xs:mt-3">
-              <span className="text-gray-400 text-xs xs:text-sm">Loading</span>
-              <span className="text-cyan-400 font-bold text-sm xs:text-base sm:text-lg">
+            <div className="flex justify-center items-center mt-2 xs:mt-3">
+              <span className={`font-bold text-sm xs:text-base sm:text-lg transition-colors duration-300 ${
+                progress === 100 ? 'text-green-400' : 'text-cyan-400'
+              }`}>
                 {Math.round(progress)}%
               </span>
             </div>
+          </div>
+
+          {/* Loading status indicators */}
+          <div className="flex justify-center gap-2 xs:gap-3">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 xs:w-2.5 xs:h-2.5 rounded-full transition-all duration-300 ${
+                  progress > (i + 1) * 33 ? 'bg-cyan-400' : 'bg-gray-600'
+                }`}
+                style={{
+                  animationDelay: `${i * 0.2}s`,
+                  animation: progress > (i + 1) * 33 ? 'pulse 1.5s infinite' : 'none'
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>
