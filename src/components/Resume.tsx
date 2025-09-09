@@ -79,7 +79,7 @@ const Resume = () => {
   const experienceData = [
     {
       id: 'multi-cloud-architect',
-      period: 'Sep 2024 – Present',
+      period: 'Sep 2025 – Present',
       client: 'Enterprise (Azure/AWS/GCP)',
       role: 'Multi Cloud Architect',
       company: 'PWC',
