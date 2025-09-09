@@ -204,13 +204,19 @@ const Resume = () => {
     );
   };
 
-  const TimelineItem = ({ item, index, isLeft = true }: { item: any, index: number, isLeft?: boolean }) => {
+  const TimelineItem = ({ item, index, isLeft = true, isMobile = false }: { item: any, index: number, isLeft?: boolean, isMobile?: boolean }) => {
     const Icon = item.icon;
     const isExpanded = expandedItems.includes(item.id);
     
     return (
       <div 
-        className={`relative mb-6 md:mb-8 lg:mb-10 ${isLeft ? 'md:pr-4 lg:pr-8' : 'md:pl-4 lg:pl-8'}`}
+        className={`relative mb-6 md:mb-8 lg:mb-10 ${
+          isMobile 
+            ? 'pl-12 md:pl-16' 
+            : isLeft 
+              ? 'md:pr-4 lg:pr-8' 
+              : 'md:pl-4 lg:pl-8'
+        }`}
         style={{ 
           animationDelay: `${index * 200}ms`,
           transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -218,17 +224,29 @@ const Resume = () => {
           transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 200}ms`
         }}
       >
-        {/* Timeline connector - Hidden on mobile, visible on md+ */}
-        <div className={`hidden md:block absolute top-6 ${isLeft ? 'right-0' : 'left-0'} w-4 lg:w-8 h-0.5 bg-gray-300`}></div>
+        {/* Timeline connector */}
+        <div className={`absolute top-6 h-0.5 bg-gray-300 ${
+          isMobile 
+            ? 'hidden' 
+            : `hidden md:block ${isLeft ? 'right-0' : 'left-0'} w-4 lg:w-8`
+        }`}></div>
         
-        {/* Timeline marker - Responsive positioning */}
-        <div className={`absolute top-5 ${isLeft ? 'md:-right-3' : 'md:-left-3'} -left-3 md:left-auto w-6 h-6 ${item.color} rounded-full flex items-center justify-center shadow-lg z-10`}>
+        {/* Timeline marker */}
+        <div className={`absolute top-5 w-6 h-6 ${item.color} rounded-full flex items-center justify-center shadow-lg z-10 ${
+          isMobile 
+            ? '-left-9 md:-left-11' 
+            : isLeft 
+              ? '-left-3 md:-right-3' 
+              : '-left-3 md:-left-3'
+        }`}>
           <Icon className="h-3 w-3 text-white" />
         </div>
 
-        {/* Content card - Fully responsive */}
+        {/* Content card */}
         <div 
-          className="group bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-lg md:hover:shadow-xl transition-all duration-300 border-2 border-transparent overflow-hidden ml-6 md:ml-0 relative cursor-pointer"
+          className={`group bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-lg md:hover:shadow-xl transition-all duration-300 border-2 border-transparent overflow-hidden relative cursor-pointer ${
+            isMobile ? '' : 'ml-6 md:ml-0'
+          }`}
           onClick={() => toggleExpanded(item.id)}
         >
           {/* Multi-color animated border */}
@@ -349,39 +367,77 @@ const Resume = () => {
         </div>
 
         {/* Fully Responsive Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative">
+        <div className="relative">
           {/* Central Timeline Line - Hidden on mobile, visible on lg+ */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform -translate-x-1/2"></div>
 
-          {/* Mobile Timeline Line - Visible only on mobile and tablet */}
-          <div className="lg:hidden absolute left-3 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+          {/* Mobile Timeline Line - Visible only on mobile */}
+          <div className="block lg:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
-          {/* Left Column - Education, Certifications, Internships */}
-          <div className="space-y-6 md:space-y-8">
-            <div className="text-center lg:text-right mb-6 md:mb-8">
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 px-2">
-                Education & Certifications
-              </h3>
-              <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto lg:ml-auto lg:mr-0"></div>
+          {/* Mobile Layout - Single Column */}
+          <div className="block lg:hidden space-y-6 md:space-y-8">
+            {/* Education Section */}
+            <div className="mb-8">
+              <div className="text-center mb-6">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                  Education & Certifications
+                </h3>
+                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto"></div>
+              </div>
+              
+              <div className="space-y-6">
+                {educationData.map((item, index) => (
+                  <TimelineItem key={item.id} item={item} index={index} isLeft={true} isMobile={true} />
+                ))}
+              </div>
             </div>
-            
-            {educationData.map((item, index) => (
-              <TimelineItem key={item.id} item={item} index={index} isLeft={true} />
-            ))}
+
+            {/* Experience Section */}
+            <div className="mb-8">
+              <div className="text-center mb-6">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                  Professional Experience
+                </h3>
+                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600 mx-auto"></div>
+              </div>
+              
+              <div className="space-y-6">
+                {experienceData.map((item, index) => (
+                  <TimelineItem key={item.id} item={item} index={index + educationData.length} isLeft={false} isMobile={true} />
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Right Column - Professional Experience */}
-          <div className="space-y-6 md:space-y-8 mt-8 md:mt-12 lg:mt-0">
-            <div className="text-center lg:text-left mb-6 md:mb-8">
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 px-2">
-                Professional Experience
-              </h3>
-              <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600 mx-auto lg:ml-0 lg:mr-auto"></div>
+          {/* Desktop Layout - Two Columns */}
+          <div className="hidden lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Left Column - Education, Certifications, Internships */}
+            <div className="space-y-6 md:space-y-8">
+              <div className="text-right mb-6 md:mb-8">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                  Education & Certifications
+                </h3>
+                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 ml-auto"></div>
+              </div>
+              
+              {educationData.map((item, index) => (
+                <TimelineItem key={item.id} item={item} index={index} isLeft={true} isMobile={false} />
+              ))}
             </div>
-            
-            {experienceData.map((item, index) => (
-              <TimelineItem key={item.id} item={item} index={index} isLeft={false} />
-            ))}
+
+            {/* Right Column - Professional Experience */}
+            <div className="space-y-6 md:space-y-8">
+              <div className="text-left mb-6 md:mb-8">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                  Professional Experience
+                </h3>
+                <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600"></div>
+              </div>
+              
+              {experienceData.map((item, index) => (
+                <TimelineItem key={item.id} item={item} index={index} isLeft={false} isMobile={false} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
