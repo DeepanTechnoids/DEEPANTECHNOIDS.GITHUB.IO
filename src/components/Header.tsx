@@ -100,7 +100,7 @@ const Header = () => {
             </div>
             <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
               <img
-                src="/assets/images/Deepansnap.png"
+                src="/assets/images/deepanlogo.png"
                 alt="Deepan Logo"
                 className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
                 onError={(e) => {

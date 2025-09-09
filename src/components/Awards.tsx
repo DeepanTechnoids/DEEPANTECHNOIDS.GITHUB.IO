@@ -62,7 +62,7 @@ const Awards = () => {
       title: 'Advanced Penetration Testing',
       company: 'CERTIFICATION',
       description: 'Advanced Security Testing Certification',
-      image: '/assets/rewards/external/advanced_penetration_testing.jpg',
+      image: '/assets/rewards/external/advanced penetration testing.jpg',
       category: 'external',
       color: 'from-blue-500 to-purple-600'
     },
@@ -83,7 +83,7 @@ const Awards = () => {
       title: 'LEAD WITH EXCELLENCE, CONFIDENCE, AND HUMILITY',
       company: 'ACCENTURE',
       description: 'Stellar Award for Leadership Excellence',
-      image: '/assets/rewards/internal/STELLAR_AWARD_MAY_7_2024.png',
+      image: '/assets/rewards/internal/STELLAR AWARD MAY 7 2024.png',
       category: 'internal',
       color: 'from-purple-500 to-cyan-600'
     },
@@ -92,7 +92,7 @@ const Awards = () => {
       title: 'Best Client Performance',
       company: 'ACCENTURE',
       description: 'Stellar Award for Outstanding Client Delivery',
-      image: '/assets/rewards/internal/STELLAR_AWARD_JAN_19_2024.png',
+      image: '/assets/rewards/internal/STELLAR AWARD JAN 19 2024.png',
       category: 'internal',
       color: 'from-cyan-500 to-purple-600'
     },
@@ -101,7 +101,7 @@ const Awards = () => {
       title: 'Client Value Creation Award',
       company: 'ACCENTURE',
       description: 'Excellence in Client Value Delivery',
-      image: '/assets/rewards/internal/Client_value_creation_dec_21_2023.png',
+      image: '/assets/rewards/internal/Client value creation dec 21 2023.png',
       category: 'internal',
       color: 'from-blue-500 to-cyan-600'
     },
@@ -110,7 +110,7 @@ const Awards = () => {
       title: 'Team Player Award',
       company: 'ACCENTURE',
       description: 'Outstanding Team Collaboration',
-      image: '/assets/rewards/internal/Team_Player_August_2023_25.png',
+      image: '/assets/rewards/internal/Team Player August 2023 25.png',
       category: 'internal',
       color: 'from-purple-500 to-pink-600'
     },
@@ -119,7 +119,7 @@ const Awards = () => {
       title: 'Accenture Celebration Of Excellence',
       company: 'ACCENTURE',
       description: 'Growth Catalyst Award for Innovation',
-      image: '/assets/rewards/internal/Growth_Catalyst_Award_August_2023_25.jpg',
+      image: '/assets/rewards/internal/Growth Catalyst Award August 2023 25.jpg',
       category: 'internal',
       color: 'from-cyan-500 to-purple-600'
     },
@@ -128,7 +128,7 @@ const Awards = () => {
       title: 'Star Of The Month July',
       company: 'ACCENTURE',
       description: 'Monthly Excellence Recognition',
-      image: '/assets/rewards/internal/Team_Player_Award_28_July_2023.png',
+      image: '/assets/rewards/internal/Team Player Award 28 July 2023.png',
       category: 'internal',
       color: 'from-pink-500 to-purple-600'
     },
@@ -137,7 +137,7 @@ const Awards = () => {
       title: 'Best Product Demonstration Award',
       company: 'ACCENTURE',
       description: '360 Client Value Creation Excellence',
-      image: '/assets/rewards/internal/Accenture_360_Client_value_creation_May_03_2023.png',
+      image: '/assets/rewards/internal/Accenture 360 Client value creation May 03 2023.png',
       category: 'internal',
       color: 'from-blue-500 to-purple-600'
     },
@@ -146,7 +146,7 @@ const Awards = () => {
       title: 'Lead with Excellence Confident',
       company: 'ACCENTURE',
       description: 'Leadership Excellence Recognition',
-      image: '/assets/rewards/internal/Team_Player_Nov_21_2022.png',
+      image: '/assets/rewards/internal/Team Player Nov 21 2022.png',
       category: 'internal',
       color: 'from-cyan-500 to-pink-600'
     },
@@ -155,7 +155,7 @@ const Awards = () => {
       title: 'Cloud First Business Quality Deliver',
       company: 'ACCENTURE',
       description: 'Retail Industry Network Excellence',
-      image: '/assets/rewards/internal/Retail_Industry_Network_AUG_18_2022.png',
+      image: '/assets/rewards/internal/Retail Industry Network AUG 18 2022.png',
       category: 'internal',
       color: 'from-purple-500 to-cyan-600'
     },
@@ -164,7 +164,7 @@ const Awards = () => {
       title: 'MICROSOFT-COGNIZANT CALIBER HACKATHON',
       company: 'COGNIZANT',
       description: 'Innovation Challenge Winner',
-      image: '/assets/rewards/internal/cognizant_cert_hackathon.jpg',
+      image: '/assets/rewards/internal/cognizant cert hackathon.jpg',
       category: 'internal',
       color: 'from-blue-500 to-cyan-600'
     }

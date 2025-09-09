@@ -10,12 +10,19 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
   const [isComplete, setIsComplete] = useState(false);
   const [colorIndex, setColorIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const loadingSections = [
     { name: 'Initializing Portfolio', duration: 200 },
     { name: 'Loading Components', duration: 150 },
     { name: 'Loading Assets', duration: 150 },
     { name: 'Finalizing', duration: 100 },
+  ];
+
+  // Images to cycle through
+  const images = [
+    '/assets/images/Deepansnap.png',
+    '/assets/images/deepanlogo.png'
   ];
 
   // Color themes for smooth transitions
@@ -90,6 +97,15 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
     return () => clearInterval(colorInterval);
   }, []);
 
+  // Image transition effect
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 1200); // Change image every 1.2 seconds
+
+    return () => clearInterval(imageInterval);
+  }, []);
+
   return (
     <div
       className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-500 ${
@@ -133,10 +149,25 @@ const Loading: React.FC<LoadingProps> = ({ onLoadingComplete }) => {
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-full opacity-100 transition-opacity duration-500 p-0.5">
             <div className="w-full h-full bg-white rounded-full"></div>
           </div>
-          <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-cyan-300 to-purple-400 flex items-center justify-center">
-            <div className="text-white font-bold text-lg xs:text-xl sm:text-2xl lg:text-3xl">
-              D
-            </div>
+          <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
+            <img
+              src={images[imageIndex]}
+              alt="Deepan Logo"
+              className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+              onError={(e) => {
+                // Fallback if image doesn't load
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = `
+                    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-300 to-purple-400 text-white font-bold text-lg xs:text-xl sm:text-2xl lg:text-3xl rounded-full">
+                      D
+                    </div>
+                  `;
+                }
+              }}
+            />
             
             {/* Progress indicator overlay */}
             <div className="absolute bottom-0 right-0 w-3 h-3 xs:w-4 xs:h-4 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
