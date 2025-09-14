@@ -262,7 +262,7 @@ const Recommendations = () => {
             {/* Animated liquid border effect */}
             <div className={`absolute -inset-1 bg-gradient-to-r ${currentRecommendation.gradient} rounded-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 blur-xl`}></div>
             <div className={`absolute -inset-0.5 bg-gradient-to-r ${currentRecommendation.gradient} rounded-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 p-1`}>
-              <div className="w-full h-full bg-white/90 backdrop-blur-xl rounded-3xl"></div>
+              <div className="w-full h-full bg-white/95 backdrop-blur-xl rounded-3xl"></div>
             </div>
 
             {/* Floating liquid quote bubbles */}
@@ -329,7 +329,7 @@ const Recommendations = () => {
                 
                 {/* Compact Profile Info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className={`font-black text-gray-900 text-lg sm:text-xl mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${currentRecommendation.gradient} transition-all duration-500`}>
+                  <h3 className="font-black text-gray-900 text-lg sm:text-xl mb-1 transition-all duration-500 group-hover:text-gray-800">
                     {currentRecommendation.name}
                   </h3>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-2">
