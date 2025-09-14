@@ -237,9 +237,6 @@ image: '/assets/rewards/internal/STELLAR AWARD MAY 7 2024 .png',      category: 
           {/* Section Title */}
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="p-2 md:p-3 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-xl md:rounded-2xl">
-                <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
-              </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
                 Awards & <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600">Recognition</span>
               </h2>

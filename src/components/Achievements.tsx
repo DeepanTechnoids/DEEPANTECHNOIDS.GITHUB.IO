@@ -165,12 +165,6 @@ const Achievements = () => {
           </div>
         </div>
 
-        {/* Pause indicator */}
-        <div className="text-center mt-8">
-          <p className="text-sm text-gray-400 relative z-10">
-            Hover over badges to pause scrolling
-          </p>
-        </div>
       </div>
 
       <style jsx>{`

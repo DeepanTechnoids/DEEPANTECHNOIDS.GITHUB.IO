@@ -7,6 +7,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Achievements from './components/Achievements';
 import Awards from './components/Awards';
+import Videos from './components/Videos';
 import Badges from './components/Badges';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
@@ -60,6 +61,7 @@ function App() {
         <Resume />
         <Achievements />
         <Awards />
+        <Videos />
         <Badges />
         <Contact />
       </main>

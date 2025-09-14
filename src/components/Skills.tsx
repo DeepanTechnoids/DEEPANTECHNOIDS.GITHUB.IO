@@ -84,15 +84,9 @@ const Skills = () => {
         {/* Section Title */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="p-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl">
-              <Zap className="h-8 w-8 text-white" />
-            </div>
             <h2 className="text-5xl sm:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
               EXPERTISE
             </h2>
-            <div className="p-3 bg-gradient-to-r from-purple-600 to-pink-500 rounded-2xl">
-              <Sparkles className="h-8 w-8 text-white" />
-            </div>
           </div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Mastering the art of <span className="text-cyan-400 font-semibold">technical excellence</span> and 

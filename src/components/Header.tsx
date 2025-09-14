@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Home, User, FileText, Award, Mail, Github, Linkedin, Youtube, Twitter, MessageCircle, Menu, X, Zap, Trophy, Shield } from 'lucide-react';
+import { Home, User, FileText, Award, Mail, Github, Linkedin, Youtube, Twitter, MessageCircle, Menu, X, Zap, Trophy, Shield, Video } from 'lucide-react';
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -12,6 +12,7 @@ const Header = () => {
     { id: 'resume', label: 'Resume', icon: FileText },
     { id: 'achievements', label: 'Awards', icon: Award },
     { id: 'awards', label: 'Recognition', icon: Trophy },
+    { id: 'videos', label: 'Videos', icon: Video },
     { id: 'badges', label: 'Badges', icon: Shield },
     { id: 'contact', label: 'Contact', icon: Mail },
   ];
@@ -90,19 +91,20 @@ const Header = () => {
         <div className="p-4 sm:p-5 md:p-7 text-center border-b border-gray-700/50">
           <div className="group w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24 mx-auto mb-4 sm:mb-5 rounded-full overflow-hidden relative">
             {/* Multi-color animated border */}
-            <div className="absolute -inset-3 bg-gradient-to-r from-cyan-400 via-purple-400 via-pink-400 via-blue-400 via-green-400 via-yellow-400 to-cyan-400 rounded-full opacity-70 group-hover:opacity-100 transition-all duration-500 blur-md animate-pulse group-hover:blur-lg"></div>
-            <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400 via-purple-400 via-pink-400 via-blue-400 via-green-400 via-yellow-400 to-cyan-400 rounded-full opacity-80 group-hover:opacity-100 transition-all duration-500 blur-sm animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-400 via-pink-400 via-blue-400 via-green-400 via-yellow-400 to-cyan-400 rounded-full opacity-90 group-hover:opacity-100 transition-all duration-500 p-0.5 animate-spin" style={{ animationDuration: '4s' }}>
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-300/40 via-purple-300/40 via-pink-300/40 via-blue-300/40 via-green-300/40 via-yellow-300/40 to-cyan-300/40 rounded-full opacity-60 group-hover:opacity-90 transition-all duration-700 blur-xl animate-pulse group-hover:blur-2xl"></div>
+            <div className="absolute -inset-3 bg-gradient-to-r from-cyan-300/50 via-purple-300/50 via-pink-300/50 via-blue-300/50 via-green-300/50 via-yellow-300/50 to-cyan-300/50 rounded-full opacity-70 group-hover:opacity-100 transition-all duration-600 blur-lg animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-cyan-300/60 via-purple-300/60 via-pink-300/60 via-blue-300/60 via-green-300/60 via-yellow-300/60 to-cyan-300/60 rounded-full opacity-80 group-hover:opacity-100 transition-all duration-500 blur-md animate-pulse" style={{ animationDelay: '0.6s' }}></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300/70 via-purple-300/70 via-pink-300/70 via-blue-300/70 via-green-300/70 via-yellow-300/70 to-cyan-300/70 rounded-full opacity-85 group-hover:opacity-100 transition-all duration-500 p-0.5 animate-spin" style={{ animationDuration: '6s' }}>
               <div className="w-full h-full bg-gray-900 rounded-full"></div>
             </div>
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-400 via-pink-400 via-cyan-400 via-blue-400 via-green-400 via-yellow-400 to-purple-400 rounded-full opacity-95 group-hover:opacity-100 transition-all duration-500 p-0.5 animate-spin" style={{ animationDuration: '6s', animationDirection: 'reverse' }}>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-300/80 via-pink-300/80 via-cyan-300/80 via-blue-300/80 via-green-300/80 via-yellow-300/80 to-purple-300/80 rounded-full opacity-90 group-hover:opacity-100 transition-all duration-500 p-0.5 animate-spin" style={{ animationDuration: '8s', animationDirection: 'reverse' }}>
               <div className="w-full h-full bg-gray-900 rounded-full"></div>
             </div>
-            <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+            <div className="relative w-full h-full rounded-full overflow-hidden bg-white/95 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-2xl border-2 border-white/20">
               <img
                 src="/assets/images/deepanlogo.png"
                 alt="Deepan Logo"
-                className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
+                className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform duration-700 filter drop-shadow-lg"
                 onError={(e) => {
                   // Fallback if image doesn't load
                   const target = e.target as HTMLImageElement;
@@ -110,7 +112,7 @@ const Header = () => {
                   const parent = target.parentElement;
                   if (parent) {
                     parent.innerHTML = `
-                      <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-300 to-purple-300 text-white font-bold text-lg rounded-full">
+                      <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-300/80 to-purple-300/80 text-white font-bold text-lg rounded-full shadow-inner">
                         D
                       </div>
                     `;
@@ -118,6 +120,9 @@ const Header = () => {
                 }}
               />
             </div>
+            
+            {/* Additional glow effect on hover */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-200/20 via-purple-200/20 via-pink-200/20 via-blue-200/20 via-green-200/20 via-yellow-200/20 to-cyan-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl animate-pulse"></div>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 mb-3 sm:mb-4 animate-pulse">DEEPANRAJ</h2>
           

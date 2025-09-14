@@ -43,15 +43,9 @@ const Badges = () => {
         {/* Section Title */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl">
-              <Shield className="h-8 w-8 text-white" />
-            </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
               BADGES
             </h2>
-            <div className="p-3 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-2xl">
-              <Star className="h-8 w-8 text-white" />
-            </div>
           </div>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             My technical badges are digital representations of <span className="text-blue-400 font-semibold">skills</span>, 
@@ -127,9 +121,6 @@ const Badges = () => {
 
         {/* Controls Info */}
         <div className="text-center mt-8 sm:mt-12">
-          <p className="text-gray-400 text-xs sm:text-sm mb-4">
-            Hover over badges to pause scrolling
-          </p>
           <div className="flex items-center justify-center gap-3 sm:gap-6 text-gray-500 text-xs sm:text-sm">
             <div className="flex items-center gap-2">
               <Award className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />
