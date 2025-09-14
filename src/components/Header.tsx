@@ -103,8 +103,8 @@ const Header = () => {
             <div className="relative w-full h-full rounded-full overflow-hidden bg-white/95 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-2xl border-2 border-white/20">
               <img
                 src="/assets/images/deepanlogo.png"
-                alt="Deepan Logo"
-                className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform duration-700 filter drop-shadow-lg"
+                alt="Deepanraj Profile"
+                className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 filter drop-shadow-lg"
                 onError={(e) => {
                   // Fallback if image doesn't load
                   const target = e.target as HTMLImageElement;
