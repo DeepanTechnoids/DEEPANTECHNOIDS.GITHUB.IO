@@ -114,10 +114,10 @@ const Resume = () => {
       color: 'bg-blue-500'
     },
     {
-      id: 'presales-consultant',
+      id: 'Cloud Architect',
       period: 'Nov 2023 – Oct 2024 (12 months)',
       client: 'Logistics',
-      role: 'Pre-Sales Consultant',
+      role: 'Cloud Architect',
       company: 'Accenture India Advanced Centre',
       description: 'Shaped logistics solutions with IoT and analytics, focusing on real-time visibility and client engagement.',
       responsibilities: [

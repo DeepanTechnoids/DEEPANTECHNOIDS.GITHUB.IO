@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import Achievements from './components/Achievements';
 import Awards from './components/Awards';
 import Videos from './components/Videos';
+import Recommendations from './components/Recommendations';
 import Badges from './components/Badges';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
@@ -62,6 +63,7 @@ function App() {
         <Achievements />
         <Awards />
         <Videos />
+        <Recommendations />
         <Badges />
         <Contact />
       </main>
