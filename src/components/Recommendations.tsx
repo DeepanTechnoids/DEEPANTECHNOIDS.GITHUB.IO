@@ -262,7 +262,7 @@ const Recommendations = () => {
             {/* Animated liquid border effect */}
             <div className={`absolute -inset-1 bg-gradient-to-r ${currentRecommendation.gradient} rounded-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 blur-xl`}></div>
             <div className={`absolute -inset-0.5 bg-gradient-to-r ${currentRecommendation.gradient} rounded-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 p-1`}>
-              <div className="w-full h-full bg-white/95 backdrop-blur-xl rounded-3xl"></div>
+              <div className="w-full h-full bg-white/90 backdrop-blur-xl rounded-3xl"></div>
             </div>
 
             {/* Floating liquid quote bubbles */}
@@ -329,7 +329,7 @@ const Recommendations = () => {
                 
                 {/* Compact Profile Info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-black text-gray-900 text-lg sm:text-xl mb-1 transition-all duration-500 group-hover:text-gray-800">
+                  <h3 className={`font-black text-gray-900 text-lg sm:text-xl mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${currentRecommendation.gradient} transition-all duration-500`}>
                     {currentRecommendation.name}
                   </h3>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-2">
@@ -421,19 +421,6 @@ const Recommendations = () => {
           </button>
         </div>
 
-        {/* Enhanced Auto-play Indicator with Liquid Styling */}
-        <div className="text-center mt-6 sm:mt-8">
-          <div className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white/80 backdrop-blur-xl rounded-full shadow-lg border border-gray-200">
-            <div className={`w-3 h-3 rounded-full ${isAutoPlaying && !hoveredCard ? 'bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse shadow-lg' : 'bg-gray-400'}`}></div>
-            <p className="text-sm sm:text-base text-gray-700 font-medium">
-              {isAutoPlaying && !hoveredCard ? (
-                <>Auto-playing • Hover to pause • {recommendations.length} professional reviews</>
-              ) : (
-                <>Paused • Move away to resume • Review {currentIndex + 1} of {recommendations.length}</>
-              )}
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* Custom Styles for Liquid Effects */}
