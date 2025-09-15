@@ -109,7 +109,6 @@ const About = () => {
                   </div>
                   {/* Content wrapper */}
                   <div className="relative z-10 text-center">
-                    <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">💖</div>
                     <blockquote className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 leading-relaxed">
                       "Love the life you live and live the life you love"
                     </blockquote>
