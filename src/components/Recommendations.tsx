@@ -8,6 +8,20 @@ const Recommendations = () => {
 
   const recommendations = [
     {
+      id: 'deepak-kadam',
+      name: 'Deepak Kadam',
+      title: 'Tech Architect Assoc Manager',
+      company: 'Accenture',
+      relationship: 'Worked with Deepanraj on the same team',
+      date: 'September 15, 2025',
+      image: '/assets/recommendations/deepak-kadam.jpg',
+      recommendation: "I had the chance to work with Deepan on Azure projects for a North America client, and he did a great job delivering Tier-3 architecture solutions. He has strong expertise in Azure AI Foundry and knows how to design scalable, enterprise-ready systems that bring real business value. What I appreciate most is how he connects technical strategies with business goals in a clear and practical way. I'd highly recommend Deepan not just as an Azure Architect, but also for Business Architect and Pre-Sales Tech roles where his client-first approach makes a big difference.",
+      gradient: 'from-blue-400 via-indigo-500 to-purple-600',
+      liquidColor: 'bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100',
+      accentColor: 'text-blue-600',
+      shadowColor: 'shadow-blue-500/20'
+    },
+    {
       id: 'sunita-bhujbal', 
       name: 'Sunita Bhujbal',
       title: 'Program Project Manager',
@@ -161,6 +175,19 @@ const Recommendations = () => {
   };
 
   const currentRecommendation = recommendations[currentIndex];
+
+  // Early return if currentRecommendation is undefined
+  if (!currentRecommendation) {
+    return (
+      <section id="recommendations" className="py-12 sm:py-16 lg:py-20 bg-white lg:ml-56 xl:ml-64 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            <p className="text-gray-500">Loading recommendations...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="recommendations" className="py-12 sm:py-16 lg:py-20 bg-white lg:ml-56 xl:ml-64 relative overflow-hidden">
@@ -329,7 +356,7 @@ const Recommendations = () => {
                 
                 {/* Compact Profile Info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className={`font-black text-gray-900 text-lg sm:text-xl mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${currentRecommendation.gradient} transition-all duration-500`}>
+                  <h3 className="font-black text-gray-900 text-lg sm:text-xl mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:via-purple-400 group-hover:via-pink-400 group-hover:via-blue-400 group-hover:via-green-400 group-hover:via-yellow-400 group-hover:to-cyan-400 transition-all duration-700 animate-gradient-x">
                     {currentRecommendation.name}
                   </h3>
                   <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-2">
