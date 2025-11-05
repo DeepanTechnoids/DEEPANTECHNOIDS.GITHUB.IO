@@ -59,7 +59,7 @@ const About = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed max-w-6xl mx-auto">
-            Jovial Internet freak who is in love with <span className="text-cyan-600 font-semibold">0 and 1</span> and by profession Azure/AWS cloud Architect also part of <span className="text-purple-600 font-semibold">Microsoft Security Researcher</span> with 7+ years of experience and do own <span className="text-pink-600 font-semibold">CVE-2021-24113</span>, certified in Azure AZ-305 and AWS Solutions Architect.
+            Jovial Internet freak who is in love with <span className="text-cyan-600 font-semibold">0 and 1</span> and by profession Azure/AWS cloud Architect also part of <span className="text-purple-600 font-semibold">Microsoft Security Researcher</span> with 8+ years of experience and do own <span className="text-pink-600 font-semibold">CVE-2021-24113</span>, certified in Azure AZ-305 and AWS Solutions Architect.
           </p>
         </div>
 
