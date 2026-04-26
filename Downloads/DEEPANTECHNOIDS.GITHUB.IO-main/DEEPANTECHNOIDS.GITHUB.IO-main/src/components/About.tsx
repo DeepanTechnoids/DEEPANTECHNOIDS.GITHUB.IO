@@ -3,15 +3,14 @@ import { Download, ExternalLink, Code, ChevronRight, Sparkles, Star, Heart } fro
 
 const About = () => {
   const hobbies = [
-    { name: 'Xbox', icon: '/src/components/Assests/hobbies/XBOX.png', color: 'from-green-400 to-green-600', hoverColor: 'border-green-400 shadow-green-400/50' },
-    { name: 'Raptorz', icon: '/src/components/Assests/hobbies/RAPTOR.png', color: 'from-gray-400 to-gray-600', hoverColor: 'border-gray-400 shadow-gray-400/50' },
-    { name: 'Netflix', icon: '/src/components/Assests/hobbies/NETFLIX.png', color: 'from-red-400 to-red-600', hoverColor: 'border-red-400 shadow-red-400/50' },
-    { name: 'Gym', icon: '/src/components/Assests/hobbies/GYM.png', color: 'from-blue-400 to-blue-600', hoverColor: 'border-blue-400 shadow-blue-400/50' },
-    { name: 'Music', icon: '/src/components/Assests/hobbies/DJ.jpg', color: 'from-purple-400 to-purple-600', hoverColor: 'border-purple-400 shadow-purple-400/50' },
+    { name: 'Xbox', icon: '/assets/hobbies/XBOX.png', color: 'from-green-400 to-green-600', hoverColor: 'border-green-400 shadow-green-400/50' },
+    { name: 'Raptorz', icon: '/assets/hobbies/RAPTOR.png', color: 'from-gray-400 to-gray-600', hoverColor: 'border-gray-400 shadow-gray-400/50' },
+    { name: 'Netflix', icon: '/assets/hobbies/NETFLIX.png', color: 'from-red-400 to-red-600', hoverColor: 'border-red-400 shadow-red-400/50' },
+    { name: 'Gym', icon: '/assets/hobbies/GYM.png', color: 'from-blue-400 to-blue-600', hoverColor: 'border-blue-400 shadow-blue-400/50' },
+    { name: 'Music', icon: '/assets/hobbies/DJ.jpg', color: 'from-purple-400 to-purple-600', hoverColor: 'border-purple-400 shadow-purple-400/50' },
   ];
 
   const personalInfoLeft = [
-    { label: 'Birthday', value: 'July 1995', icon: '🎂' },
     { label: 'Website', value: 'https://deepantechnoids.github.io/', link: true, icon: '🌐' },
     { label: 'Phone', value: '+91 9629096218', icon: '📱' },
     { label: 'Location', value: 'Earth, Galaxy', icon: '🌍' },
@@ -20,7 +19,6 @@ const About = () => {
   ];
 
   const personalInfoRight = [
-    { label: 'Age', value: '29', icon: '👤' },
     { label: 'Degree', value: 'Bachelor Of Engineering', icon: '🎓' },
     { label: 'Email', value: 'Deepanrey@gmail.com', icon: '📧' },
     { label: 'LinkedIn', value: 'Deepanraj95', icon: '💼' },
@@ -55,13 +53,13 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 via-pink-400 via-blue-400 via-green-400 via-yellow-400 to-cyan-400 animate-gradient-x">
               About Me
-            </h2>
-          </div>
+            </span>
+          </h2>
           <p className="text-xl text-gray-600 leading-relaxed max-w-6xl mx-auto">
-            Jovial Internet freak who is in love with <span className="text-cyan-600 font-semibold">0 and 1</span> and by profession cloud engineer also part of <span className="text-purple-600 font-semibold">Microsoft Security Researcher</span> with 7++ years of experience and do own <span className="text-pink-600 font-semibold">CVE-2021-24113</span>, certified in Azure AZ-305 and AWS Solutions Architect.
+            Jovial Internet freak who is in love with <span className="text-cyan-600 font-semibold">0 and 1</span> and by profession Azure/AWS/GCP Cloud Solution Architect also part of <span className="text-purple-600 font-semibold">Microsoft Security Researcher</span> with 8+ years of experience and do own <span className="text-pink-600 font-semibold">CVE-2021-24113</span>, certified in Azure AZ-305, AWS Solutions Architect, GCP Digital Leader.
           </p>
         </div>
 
@@ -81,7 +79,7 @@ const About = () => {
                 </div>
                 <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 group-hover:scale-105 transition-all duration-500 border border-gray-200">
                   <img
-                    src="/src/components/Assests/DEEPAN.jpg"
+                    src="/assets/images/DEEPAN.jpg"
                     alt="Deepanraj"
                     className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                   />
@@ -100,50 +98,64 @@ const About = () => {
             </div>
 
             {/* Enhanced Hobbies Section */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-3xl blur opacity-30 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-              <div className="relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden">
-                {/* Multi-color animated border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-pink-300 via-cyan-300 via-blue-300 to-purple-300 rounded-3xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 p-0.5">
-                  <div className="w-full h-full bg-white rounded-[calc(1.5rem-2px)]"></div>
+            <div className="space-y-6 sm:space-y-8">
+              {/* Quote Box */}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-3xl blur opacity-30 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                <div className="relative bg-white rounded-3xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden">
+                  {/* Multi-color animated border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-pink-300 via-cyan-300 via-blue-300 to-purple-300 rounded-3xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 p-0.5">
+                    <div className="w-full h-full bg-white rounded-[calc(1.5rem-2px)]"></div>
+                  </div>
+                  {/* Content wrapper */}
+                  <div className="relative z-10 text-center">
+                    <blockquote className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 leading-relaxed">
+                      "Love the life you live and live the life you love"
+                    </blockquote>
+                  </div>
                 </div>
-                {/* Static border */}
-                <div className="absolute inset-0 border-2 border-transparent rounded-3xl transition-all duration-500"></div>
-                {/* Content wrapper */}
-                <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center flex items-center justify-center gap-2">
-                  <Star className="w-6 h-6 text-cyan-600" />
-                  MY HOBBIES
-                  <Star className="w-6 h-6 text-purple-600" />
-                </h3>
-                <div className="grid grid-cols-5 gap-3">
-                  {hobbies.map((hobby, index) => (
-                    <div key={index} className="group/hobby text-center cursor-pointer">
-                      <div className="relative">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-full opacity-0 group-hover/hobby:opacity-100 transition-opacity duration-500 blur -z-10"></div>
-                        <div className="relative aspect-square rounded-full bg-white p-1 shadow-md group-hover/hobby:shadow-xl transition-all duration-500 group-hover/hobby:scale-110 flex items-center justify-center overflow-hidden">
-                          {/* Multi-color border for hobby items */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 to-cyan-300 rounded-full opacity-30 group-hover/hobby:opacity-100 transition-opacity duration-500 p-0.5">
-                            <div className="w-full h-full bg-white rounded-full"></div>
+              </div>
+
+              {/* Hobbies Section */}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-3xl blur opacity-30 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                <div className="relative bg-white rounded-3xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden">
+                  {/* Multi-color animated border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-pink-300 via-cyan-300 via-blue-300 to-purple-300 rounded-3xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 p-0.5">
+                    <div className="w-full h-full bg-white rounded-[calc(1.5rem-2px)]"></div>
+                  </div>
+                  {/* Content wrapper */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
+                      MY HOBBIES
+                    </h3>
+                    <div className="grid grid-cols-5 gap-2 sm:gap-3 md:gap-4">
+                      {hobbies.map((hobby, index) => (
+                        <div key={index} className="group/hobby text-center cursor-pointer">
+                          <div className="relative">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-100/20 via-purple-100/20 via-pink-100/20 via-blue-100/20 via-green-100/20 via-yellow-100/20 to-cyan-100/20 rounded-full opacity-30 group-hover/hobby:opacity-50 transition-opacity duration-500 blur-sm -z-10"></div>
+                            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white p-1.5 shadow-sm group-hover/hobby:shadow-md transition-all duration-500 group-hover/hobby:scale-105 flex items-center justify-center overflow-hidden border border-gray-100/40">
+                              {/* Multi-color border for hobby items */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-cyan-100/30 via-purple-100/30 via-pink-100/30 via-blue-100/30 via-green-100/30 via-yellow-100/30 to-cyan-100/30 rounded-full opacity-20 group-hover/hobby:opacity-40 transition-opacity duration-500 p-0.5">
+                                <div className="w-full h-full bg-white rounded-full"></div>
+                              </div>
+                              {/* Image container - circular and properly sized */}
+                              <div className="relative z-10 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full overflow-hidden bg-gray-50">
+                                <img
+                                  src={hobby.icon}
+                                  alt={hobby.name}
+                                  className="w-full h-full object-cover object-center group-hover/hobby:scale-110 transition-transform duration-500"
+                                />
+                              </div>
+                            </div>
                           </div>
-                          {/* Static border */}
-                          <div className="absolute inset-0 border-2 border-transparent rounded-full transition-all duration-500"></div>
-                          {/* Image container */}
-                          <div className="relative z-10 w-full h-full rounded-full overflow-hidden">
-                          <img
-                            src={hobby.icon}
-                            alt={hobby.name}
-                            className="w-full h-full object-cover rounded-full group-hover/hobby:scale-110 transition-transform duration-500"
-                          />
-                          </div>
+                          <p className="text-xs font-medium text-gray-600 mt-2 opacity-0 group-hover/hobby:opacity-100 transition-opacity duration-500">
+                            {hobby.name}
+                          </p>
                         </div>
-                      </div>
-                      <p className="text-xs font-medium text-gray-600 mt-2 opacity-0 group-hover/hobby:opacity-100 transition-opacity duration-500">
-                        {hobby.name}
-                      </p>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -162,11 +174,11 @@ const About = () => {
                 <div className="relative z-10">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                   <Code className="w-8 h-8 text-cyan-600" />
-                  CLOUD ARCHITECT
+                  CLOUD SOLUTION ARCHITECT
                 </h2>
                 
                 <p className="text-gray-700 mb-6 leading-relaxed text-lg">
-                  As a researcher at <span className="text-cyan-600 font-semibold">Technoids-Education</span>, where education is free for all, I am committed to exploring and sharing the latest advancements in technology. I own <span className="text-purple-600 font-semibold">35++ MIT-licensed projects</span> on Git, which I have proudly demonstrated in YouTube videos, showcasing my dedication to open-source development.
+                  As a researcher at <span className="text-cyan-600 font-semibold">Technoids-Education</span>, where education is free for all, I am committed to exploring and sharing the latest advancements in technology. I own <span className="text-purple-600 font-semibold">45+ MIT-licensed projects</span> on Git, which I have proudly demonstrated in YouTube videos, showcasing my dedication to open-source development.
                 </p>
 
                 {/* Enhanced Personal Information Grid */}
@@ -222,16 +234,13 @@ const About = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-700 mb-8 leading-relaxed text-lg">
-                  Active member of the <span className="text-pink-600 font-semibold">Microsoft Learn Community</span> and a dedicated researcher within the broader tech community. As an <span className="text-cyan-600 font-semibold">AWS Jam Challenge Warrior</span>, I engage in competitive problem-solving events that hone my cloud computing skills.
-                </p>
 
                 {/* Enhanced Action Buttons */}
                 <div className="flex flex-wrap gap-4">
                   <button 
                     onClick={() => {
                       const link = document.createElement('a');
-                      link.href = '/src/components/Assests/DeepanCV.pdf';
+                      link.href = '/assets/DeepanCV.pdf';
                       link.download = 'DeepanCV.pdf';
                       document.body.appendChild(link);
                       link.click();
@@ -280,18 +289,26 @@ const About = () => {
       {/* Custom CSS for gradient animation */}
       <style jsx>{`
         @keyframes gradient-x {
-          0%, 100% {
-            background-size: 200% 200%;
-            background-position: left center;
+          0% {
+            background-position: 0% 50%;
+          }
+          25% {
+            background-position: 100% 50%;
           }
           50% {
-            background-size: 200% 200%;
-            background-position: right center;
+            background-position: 100% 50%;
+          }
+          75% {
+            background-position: 0% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
           }
         }
         
         .animate-gradient-x {
-          animation: gradient-x 3s ease infinite;
+          background-size: 400% 400%;
+          animation: gradient-x 3s ease-in-out infinite;
         }
       `}</style>
     </section>

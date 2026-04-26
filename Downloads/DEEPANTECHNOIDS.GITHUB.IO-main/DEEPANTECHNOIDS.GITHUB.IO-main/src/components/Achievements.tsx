@@ -9,7 +9,7 @@ const Achievements = () => {
       company: 'MICROSOFT',
       title: 'HACKATHON WINNER',
       description: 'RAPTORZ API Management Service',
-      image: '/src/components/Assests/Achievements/Microsoft_LogO.png',
+      image: '/assets/achievements/Microsoft_LogO.png',
       link: 'https://devpost.com/software/raptorz-api-management-service',
       buttonText: 'WATCH VIDEO',
       color: 'from-cyan-500 to-purple-600',
@@ -19,7 +19,7 @@ const Achievements = () => {
       company: 'COURIER',
       title: 'SERVERLESS HACKS',
       description: 'HACKATHON WINNER',
-      image: '/src/components/Assests/Achievements/COURIER.jpg',
+      image: '/assets/achievements/COURIER.jpg',
       link: 'https://devpost.com/software/raptor-event-registration-android-apk',
       buttonText: 'WATCH VIDEO',
       color: 'from-purple-500 to-pink-600',
@@ -29,7 +29,7 @@ const Achievements = () => {
       company: 'MICROSOFT',
       title: 'CVE-2021-24113',
       description: 'Security Vulnerability Discovery',
-      image: '/src/components/Assests/Achievements/Microsoft_LogO.png',
+      image: '/assets/achievements/Microsoft_LogO.png',
       link: 'https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-24113',
       buttonText: 'CHECK OUT',
       color: 'from-blue-500 to-cyan-600',
@@ -39,7 +39,7 @@ const Achievements = () => {
       company: 'SNOWFLAKE',
       title: 'VISION AI',
       description: 'AI-powered Vision Solution',
-      image: '/src/components/Assests/Achievements/SNOW-35164165.png',
+      image: '/assets/achievements/SNOW-35164165.png',
       link: 'https://devpost.com/software/vision-ai-7czh3x',
       buttonText: 'WATCH VIDEO',
       color: 'from-cyan-500 to-blue-600',
@@ -49,7 +49,7 @@ const Achievements = () => {
       company: 'AWS',
       title: 'COUNTERFEITING HACKATHON',
       description: 'Twilight Cloud Coderz Solution',
-      image: '/src/components/Assests/Achievements/aws-logo.png',
+      image: '/assets/achievements/aws-logo.png',
       link: 'https://devpost.com/software/twilight-cloud-coderz-solution-for-counterfeiting',
       buttonText: 'WATCH VIDEO',
       color: 'from-purple-500 to-cyan-600',
@@ -59,7 +59,7 @@ const Achievements = () => {
       company: 'COGNIZANT',
       title: 'P-3 CALIBER HACKATHON',
       description: 'Innovation Challenge Winner',
-      image: '/src/components/Assests/Achievements/COGNIZANT.jpg',
+      image: '/assets/achievements/COGNIZANT.jpg',
       link: 'https://patet21.github.io/PATET/',
       buttonText: 'CHECK ARTICLE',
       color: 'from-pink-500 to-purple-600',
@@ -165,12 +165,6 @@ const Achievements = () => {
           </div>
         </div>
 
-        {/* Pause indicator */}
-        <div className="text-center mt-8">
-          <p className="text-sm text-gray-400 relative z-10">
-            Hover over badges to pause scrolling
-          </p>
-        </div>
       </div>
 
       <style jsx>{`

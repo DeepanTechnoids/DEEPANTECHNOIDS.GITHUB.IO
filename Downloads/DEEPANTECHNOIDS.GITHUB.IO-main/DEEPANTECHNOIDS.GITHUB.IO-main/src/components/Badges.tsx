@@ -7,7 +7,7 @@ const Badges = () => {
   // Auto-generate badges from 1.png to 16.png
   const badges = Array.from({ length: 16 }, (_, index) => ({
     id: index + 1,
-    image: `/src/components/Assests/Badges/${index + 1}.png`,
+    image: `/assets/badges/${index + 1}.png`,
     alt: `Technical Badge ${index + 1}`,
     title: `Certification ${index + 1}`
   }));
@@ -121,9 +121,6 @@ const Badges = () => {
 
         {/* Controls Info */}
         <div className="text-center mt-8 sm:mt-12">
-          <p className="text-gray-400 text-xs sm:text-sm mb-4">
-            Hover over badges to pause scrolling
-          </p>
           <div className="flex items-center justify-center gap-3 sm:gap-6 text-gray-500 text-xs sm:text-sm">
             <div className="flex items-center gap-2">
               <Award className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />

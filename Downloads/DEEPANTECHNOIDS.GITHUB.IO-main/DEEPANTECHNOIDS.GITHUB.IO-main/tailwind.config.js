@@ -66,6 +66,11 @@ export default {
         '18': '4.5rem',
         '88': '22rem',
       },
+      lineClamp: {
+        1: '1',
+        2: '2',
+        3: '3',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

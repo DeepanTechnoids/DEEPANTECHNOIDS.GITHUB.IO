@@ -78,14 +78,30 @@ const Resume = () => {
 
   const experienceData = [
     {
+      id: 'Senior Solution Architect',
+      period: 'April 2026 – Present',
+      client: 'Google Cloud',
+      role: 'Senior Solution Architect',
+      company: 'NTT DATA -MALAYSIA',
+      description: 'I drive cloud transformation by architecting scalable Google Cloud solutions, supporting modernization, migration programs, and presales engagements across APAC clients.',
+      responsibilities: [
+        'Leading presales and solutioning for APAC Google Cloud clients, including proposals, solution demos, effort estimation, and man-day rate planning',
+        'Architected and delivered cloud migration and modernization solutions on Google Cloud, improving scalability, resilience, and operational efficiency',
+        'Partnered with stakeholders and engineering teams to translate business requirements into scalable cloud architectures and transformation roadmaps',
+        'Supported deal shaping, cost estimation, and technical consulting, contributing to successful client engagements and accelerated cloud adoption'
+      ],
+      icon: Cloud,
+      color: 'bg-red-500'
+    },
+    {
       id: 'multi-cloud-architect',
-      period: 'Sep 2024 – Present',
+      period: 'Sep 2025 – March 2026',
       client: 'Enterprise (Azure/AWS/GCP)',
       role: 'Multi Cloud Architect',
       company: 'PWC',
-      description: 'Designing and implementing scalable, secure, and cost-optimized solutions across AWS, Azure, OCI and GCP',
+      description: 'Designing and implementing scalable, secure, and cost-optimized solutions across AWS, Azure and GCP. I specialize in hybrid and multi-cloud strategies, cloud migration, automation, and governance frameworks while ensuring seamless integration, performance optimization, and compliance.',
       responsibilities: [
-        'Architected multi-cloud solutions spanning AWS, Azure, OCI, and GCP platforms',
+        'Architected multi-cloud solutions spanning AWS, Azure, and GCP platforms',
         'Designed hybrid cloud strategies for seamless on-premises to cloud integration',
         'Implemented cloud migration frameworks with zero-downtime deployment strategies',
         'Developed automation pipelines for infrastructure provisioning and management',
@@ -114,10 +130,10 @@ const Resume = () => {
       color: 'bg-blue-500'
     },
     {
-      id: 'presales-consultant',
+      id: 'Cloud Architect',
       period: 'Nov 2023 – Oct 2024 (12 months)',
       client: 'Logistics',
-      role: 'Pre-Sales Consultant',
+      role: 'Cloud Architect',
       company: 'Accenture India Advanced Centre',
       description: 'Shaped logistics solutions with IoT and analytics, focusing on real-time visibility and client engagement.',
       responsibilities: [
@@ -185,7 +201,7 @@ const Resume = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -209,7 +225,7 @@ const Resume = () => {
     
     return (
       <div 
-        className={`relative mb-3 xs:mb-4 sm:mb-6 md:mb-8 ${isLeft ? 'xs:pr-1 sm:pr-2 md:pr-4 lg:pr-8' : 'xs:pl-1 sm:pl-2 md:pl-4 lg:pl-8'}`}
+        className={`relative mb-8 lg:mb-10 ${isLeft ? 'lg:pr-8' : 'lg:pl-8'} pl-12 lg:pl-0`}
         style={{ 
           animationDelay: `${index * 200}ms`,
           transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -217,114 +233,119 @@ const Resume = () => {
           transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 200}ms`
         }}
       >
-        {/* Timeline connector - Hidden on mobile, visible on larger screens */}
-        <div className={`hidden sm:block absolute top-4 xs:top-5 sm:top-6 ${isLeft ? 'right-0' : 'left-0'} w-1 xs:w-2 md:w-4 lg:w-8 h-0.5 bg-gray-300`}></div>
+        {/* Timeline connector - Desktop only */}
+        <div className={`absolute top-6 h-0.5 bg-gray-300 hidden lg:block ${
+          isLeft ? 'right-0 w-8' : 'left-0 w-8'
+        }`}></div>
         
-        {/* Timeline marker - Responsive positioning */}
-        <div className={`absolute top-3 xs:top-4 ${isLeft ? 'xs:-right-1 sm:-right-2 md:-right-3' : 'xs:-left-1 sm:-left-2 md:-left-3'} -left-2 xs:-left-3 sm:left-auto w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 ${item.color} rounded-full flex items-center justify-center shadow-lg z-10`}>
-          <Icon className="h-2 w-2 xs:h-2.5 xs:w-2.5 sm:h-3 sm:w-3 text-white" />
+        {/* Timeline marker */}
+        <div className={`absolute top-5 w-6 h-6 ${item.color} rounded-full flex items-center justify-center shadow-lg z-10 ${
+          isLeft ? '-left-9 lg:-right-3' : '-left-9 lg:-left-3'
+        }`}>
+          <Icon className="h-3 w-3 text-white" />
         </div>
 
-        {/* Content card - Fully responsive */}
-        <div className="box group bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-lg sm:hover:shadow-xl transition-all duration-300 border-2 border-transparent overflow-hidden ml-3 xs:ml-4 sm:ml-0 relative">
+        {/* Content card */}
+        <div 
+          className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent overflow-hidden relative cursor-pointer ml-6 lg:ml-0"
+          onClick={() => toggleExpanded(item.id)}
+        >
           {/* Multi-color animated border */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-lg sm:rounded-xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-lg sm:rounded-xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 p-0.5">
-            <div className="w-full h-full bg-white rounded-lg sm:rounded-xl"></div>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-2xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-purple-300 via-pink-300 via-blue-300 via-green-300 via-yellow-300 to-cyan-300 rounded-2xl opacity-30 group-hover:opacity-100 transition-opacity duration-500 p-0.5">
+            <div className="w-full h-full bg-white rounded-2xl"></div>
           </div>
           
-          <div className="p-2 xs:p-3 sm:p-4 md:p-6">
+          <div className="p-6 lg:p-8">
             <div className="relative z-10">
-            {/* Header - Responsive layout */}
-            <div className="flex flex-col gap-1 xs:gap-2 sm:gap-3 mb-2 xs:mb-3 sm:mb-4">
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 xs:mb-1 sm:mb-2 leading-tight break-words">
-                    {item.title || item.role}
-                  </h3>
-                </div>
-                <button
-                  onClick={() => toggleExpanded(item.id)}
-                  className="flex-shrink-0 p-1 xs:p-1.5 sm:p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                >
-                  {isExpanded ? <ChevronUp className="h-3 w-3 xs:h-4 xs:w-4 sm:h-5 sm:w-5" /> : <ChevronDown className="h-3 w-3 xs:h-4 xs:w-4 sm:h-5 sm:w-5" />}
-                </button>
-              </div>
-              
-              <div className="space-y-0.5 xs:space-y-1 sm:space-y-2">
-                <div className="flex items-center gap-1 xs:gap-2 text-xs sm:text-sm text-gray-600">
-                  <Calendar className="h-2.5 w-2.5 xs:h-3 xs:w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                  <span className="font-medium break-words">{item.period}</span>
-                </div>
-                <div className="flex items-center gap-1 xs:gap-2 text-xs sm:text-sm text-gray-600">
-                  <MapPin className="h-2.5 w-2.5 xs:h-3 xs:w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                  <span className="break-words">{item.institution || item.company}</span>
-                </div>
-                {item.client && (
-                  <div className="flex items-center gap-1 xs:gap-2 text-xs sm:text-sm text-gray-600">
-                    <Building className="h-2.5 w-2.5 xs:h-3 xs:w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                    <span className="break-words">Client: {item.client}</span>
+              {/* Header */}
+              <div className="flex flex-col gap-3 mb-4">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 leading-tight break-words">
+                      {item.title || item.role}
+                    </h3>
                   </div>
-                )}
-              </div>
-              
-              {item.type && (
-                <span className={`inline-block px-1.5 xs:px-2 py-0.5 xs:py-1 text-xs font-medium rounded-full self-start ${
-                  item.type === 'Certification' ? 'bg-yellow-100 text-yellow-800' :
-                  item.type === 'Internship' ? 'bg-blue-100 text-blue-800' :
-                  'bg-green-100 text-green-800'
-                }`}>
-                  {item.type}
-                </span>
-              )}
-            </div>
-
-            {/* Description - Responsive text */}
-            <p className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed mb-2 xs:mb-3 sm:mb-4">
-              {item.description}
-            </p>
-
-            {/* Expandable content */}
-            <div className={`transition-all duration-300 overflow-hidden ${
-              isExpanded ? 'max-h-[800px] xs:max-h-[700px] sm:max-h-[600px] md:max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-            }`}>
-              <div className="border-t border-gray-100 pt-2 xs:pt-3 sm:pt-4">
-                <h4 className="font-semibold text-gray-900 mb-1.5 xs:mb-2 sm:mb-3 text-xs sm:text-sm md:text-base">
-                  {item.achievements ? 'Key Achievements:' : 'Key Responsibilities & Impact:'}
-                </h4>
-                <ul className="space-y-1 xs:space-y-1.5 sm:space-y-2">
-                  {(item.achievements || item.responsibilities)?.map((point: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-1.5 xs:gap-2 text-xs sm:text-sm md:text-base text-gray-700">
-                      <div className="w-1 h-1 xs:w-1.5 xs:h-1.5 bg-cyan-500 rounded-full mt-1 xs:mt-1.5 sm:mt-2 flex-shrink-0"></div>
-                      <span className="leading-relaxed break-words">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Credentials - Fully responsive buttons */}
-                {item.credentials && (
-                  <div className="mt-2 xs:mt-3 sm:mt-4 pt-2 xs:pt-3 sm:pt-4 border-t border-gray-100">
-                    <h4 className="font-semibold text-gray-900 mb-1.5 xs:mb-2 sm:mb-3 text-xs sm:text-sm md:text-base">
-                      Credentials:
-                    </h4>
-                    <div className="flex flex-col xs:flex-row flex-wrap gap-1.5 xs:gap-2">
-                      {item.credentials.map((cred: any, idx: number) => (
-                        <a
-                          key={idx}
-                          href={cred.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1 px-2 xs:px-3 py-1.5 xs:py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full text-xs font-medium transition-colors duration-200 w-full xs:w-auto min-w-0"
-                        >
-                          <ExternalLink className="h-2.5 w-2.5 xs:h-3 xs:w-3 flex-shrink-0" />
-                          <span className="truncate">{cred.name}</span>
-                        </a>
-                      ))}
+                  <div className="flex-shrink-0 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                    {isExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600">
+                    <Calendar className="h-4 w-4 flex-shrink-0" />
+                    <span className="font-medium break-words">{item.period}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600">
+                    <MapPin className="h-4 w-4 flex-shrink-0" />
+                    <span className="break-words">{item.institution || item.company}</span>
+                  </div>
+                  {item.client && (
+                    <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600">
+                      <Building className="h-4 w-4 flex-shrink-0" />
+                      <span className="break-words">Client: {item.client}</span>
                     </div>
-                  </div>
+                  )}
+                </div>
+                
+                {item.type && (
+                  <span className={`inline-block px-3 py-1 text-sm font-medium rounded-full self-start ${
+                    item.type === 'Certification' ? 'bg-yellow-100 text-yellow-800' :
+                    item.type === 'Internship' ? 'bg-blue-100 text-blue-800' :
+                    'bg-green-100 text-green-800'
+                  }`}>
+                    {item.type}
+                  </span>
                 )}
               </div>
-            </div>
+
+              {/* Description */}
+              <p className="text-gray-700 text-sm lg:text-base leading-relaxed mb-4">
+                {item.description}
+              </p>
+
+              {/* Expandable content */}
+              <div className={`transition-all duration-300 overflow-hidden ${
+                isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+              }`}>
+                <div className="border-t border-gray-100 pt-4">
+                  <h4 className="font-semibold text-gray-900 mb-3 text-sm lg:text-base">
+                    {item.achievements ? 'Key Achievements:' : 'Key Responsibilities & Impact:'}
+                  </h4>
+                  <ul className="space-y-2">
+                    {(item.achievements || item.responsibilities)?.map((point: string, idx: number) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm lg:text-base text-gray-700">
+                        <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="leading-relaxed break-words">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Credentials */}
+                  {item.credentials && (
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <h4 className="font-semibold text-gray-900 mb-3 text-sm lg:text-base">
+                        Credentials:
+                      </h4>
+                      <div className="flex flex-col sm:flex-row flex-wrap gap-2">
+                        {item.credentials.map((cred: any, idx: number) => (
+                          <a
+                            key={idx}
+                            href={cred.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-1 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto min-w-0"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink className="h-3 w-3 flex-shrink-0" />
+                            <span className="truncate">{cred.name}</span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -333,53 +354,91 @@ const Resume = () => {
   };
 
   return (
-    <section id="resume" ref={sectionRef} className="py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 bg-gray-50 lg:ml-56 xl:ml-64">
-      <div className="max-w-7xl mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8">
-        {/* Section Title - Fully responsive typography */}
-        <div className="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 xs:mb-3 sm:mb-4 px-1 xs:px-2">
+    <section id="resume" ref={sectionRef} className="py-20 bg-gray-50 lg:ml-56 xl:ml-64">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        {/* Section Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-purple-600">Resume</span>
           </h2>
-          <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2 xs:px-4 sm:px-2 md:px-0">
+          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             My journey began in 2011 as an ambitious adult, and it continues today with a focus on 
             <span className="text-cyan-600 font-semibold"> research and development</span>, driven by clear goals and aspirations.
           </p>
         </div>
 
-        {/* Fully Responsive Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 xs:gap-4 sm:gap-6 md:gap-8 lg:gap-12 relative">
-          {/* Central Timeline Line - Hidden on mobile, visible on larger screens */}
+        {/* Timeline Layout */}
+        <div className="relative">
+          {/* Central Timeline Line - Desktop only */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform -translate-x-1/2"></div>
 
-          {/* Mobile Timeline Line - Visible only on mobile */}
-          <div className="lg:hidden absolute left-2 xs:left-2.5 sm:left-3 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+          {/* Mobile Timeline Line */}
+          <div className="block lg:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
-          {/* Left Column - Education, Certifications, Internships */}
-          <div className="space-y-3 xs:space-y-4 sm:space-y-6 md:space-y-8">
-            <div className="text-center lg:text-right mb-3 xs:mb-4 sm:mb-6 md:mb-8">
-              <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-1 xs:mb-2 px-1 xs:px-2">
-                Education & Certifications
-              </h3>
-              <div className="w-8 xs:w-12 sm:w-16 h-0.5 xs:h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto lg:ml-auto lg:mr-0"></div>
+          {/* Mobile Layout - Single Column */}
+          <div className="block lg:hidden space-y-8">
+            {/* Education Section */}
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  Education & Certifications
+                </h3>
+                <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto"></div>
+              </div>
+              
+              <div className="space-y-6">
+                {educationData.map((item, index) => (
+                  <TimelineItem key={item.id} item={item} index={index} isLeft={true} />
+                ))}
+              </div>
             </div>
-            
-            {educationData.map((item, index) => (
-              <TimelineItem key={item.id} item={item} index={index} isLeft={true} />
-            ))}
+
+            {/* Experience Section */}
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  Professional Experience
+                </h3>
+                <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600 mx-auto"></div>
+              </div>
+              
+              <div className="space-y-6">
+                {experienceData.map((item, index) => (
+                  <TimelineItem key={item.id} item={item} index={index + educationData.length} isLeft={false} />
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Right Column - Professional Experience */}
-          <div className="space-y-3 xs:space-y-4 sm:space-y-6 md:space-y-8 mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-0">
-            <div className="text-center lg:text-left mb-3 xs:mb-4 sm:mb-6 md:mb-8">
-              <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-1 xs:mb-2 px-1 xs:px-2">
-                Professional Experience
-              </h3>
-              <div className="w-8 xs:w-12 sm:w-16 h-0.5 xs:h-1 bg-gradient-to-r from-purple-500 to-cyan-600 mx-auto lg:ml-0 lg:mr-auto"></div>
+          {/* Desktop Layout - Two Columns */}
+          <div className="hidden lg:grid lg:grid-cols-2 gap-12">
+            {/* Left Column - Education */}
+            <div className="space-y-8">
+              <div className="text-right mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  Education & Certifications
+                </h3>
+                <div className="w-16 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 ml-auto"></div>
+              </div>
+              
+              {educationData.map((item, index) => (
+                <TimelineItem key={item.id} item={item} index={index} isLeft={true} />
+              ))}
             </div>
-            
-            {experienceData.map((item, index) => (
-              <TimelineItem key={item.id} item={item} index={index} isLeft={false} />
-            ))}
+
+            {/* Right Column - Experience */}
+            <div className="space-y-8">
+              <div className="text-left mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  Professional Experience
+                </h3>
+                <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-600"></div>
+              </div>
+              
+              {experienceData.map((item, index) => (
+                <TimelineItem key={item.id} item={item} index={index} isLeft={false} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
